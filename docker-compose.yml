@@ -1,0 +1,65 @@
+
+services:
+  pokerdeck-web:
+    build: .
+    stdin_open: true
+    tty: true
+    environment:
+      - SECRET_KEY_BASE=838d32f2bece128979af6d0a3c406a4f39c5ff3a85f900bf17886081148fc22e262b4929ce7475324088bde8b101bad8f0d5579c8feed4e3a9d232402c625340
+      - RAILS_SERVE_STATIC_FILES=enabled
+      - RAILS_ENV=development
+    # env_file:
+    #   - .env.local
+    volumes:
+      - ./:/rails
+    working_dir: /rails
+    command: bash -c "./bin/thrust ./bin/rails server -b 0.0.0.0"
+    networks:
+      - default
+    ports:
+      - 3000:3000
+    # depends_on:
+    #   - pokerdeck-db
+  # pokerdeck-db:
+  #   image: postgres:14.3-alpine
+  #   restart: always
+  #   volumes:
+  #     - "./tmp/db:/var/lib/postgresql/data"
+  #   ports:
+  #   - "5434:5432"
+  #   networks:
+  #     - default
+  #   environment:
+  #     POSTGRES_PASSWORD: "postgres"
+  #     POSTGRES_USER: "postgres"
+  #     POSTGRES_DB: "pokerdeck_development"
+#   pokerdeck-worker:
+#     build: .
+#     stdin_open: true
+#     tty: true
+#     environment:
+#       - SECRET_KEY_BASE=838d32f2bece128979af6d0a3c406a4f39c5ff3a85f900bf17886081148fc22e262b4929ce7475324088bde8b101bad8f0d5579c8feed4e3a9d232402c625340
+#       - RAILS_SERVE_STATIC_FILES=enabled
+#     env_file:
+#       - .env.local
+#     volumes:
+#       - ./:/app
+#     working_dir: /app
+#     command: bundle exec sidekiq
+#     networks:
+#       - default
+#     depends_on:
+#       - pokerdeck-db
+#       - pokerdeck-redis
+#   pokerdeck-redis:
+#     image: redis:latest
+#     restart: always
+#     networks:
+#       - default
+#     ports:
+#       - "6380:6379"
+#     environment:
+#       - ALLOW_EMPTY_PASSWORD=yes
+# volumes:
+#   redis:
+#     driver: local
