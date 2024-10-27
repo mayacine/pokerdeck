@@ -3,11 +3,13 @@ class RoomsController < ApplicationController
 
   # GET /rooms or /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.find_each
+    @room = Room.new
   end
 
   # GET /rooms/1 or /rooms/1.json
   def show
+    @shared_url = "#{request.protocol}#{request.host}/#{@room.shared_link}"
   end
 
   # GET /rooms/new
@@ -21,15 +23,16 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
+    @service = RoomBuilderService.new(build_params: room_params)
 
     respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
+      if @service.perform
+
+        format.html { redirect_to @service.room, notice: "Room was successfully created." }
+        format.json { render :show, status: :created, location: @service.room }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.json { render json: @service.room.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +63,9 @@ class RoomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
-      @room = Room.find(params.expect(:id))
+      @room = Room.find_by(uuid: params.expect(:id)) || Room.find(params.expect(:id))
+    rescue StandardError => e
+      redirect_to rooms_path, status: :see_other, notice: "Room not found."
     end
 
     # Only allow a list of trusted parameters through.

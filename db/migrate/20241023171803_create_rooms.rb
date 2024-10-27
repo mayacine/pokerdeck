@@ -4,7 +4,7 @@ class CreateRooms < ActiveRecord::Migration[8.0]
       t.string :name
       t.string :uuid
       t.string :shared_link
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

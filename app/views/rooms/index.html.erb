@@ -1,35 +1,43 @@
 <section class="w-100 text-center mt-5">
   <h1>Bienvenue sur poker deck</h1>
   <p class="lead">Collaborez avec votre équipe pour estimer les user stories et planifier les sprints.</p>
-  <a href="#start" class="btn btn-primary btn-lg">Démarrer une session</a>
-</section>
-<div class="container mt-5">
-  <div class="row">
-    <div class="col col-md-8">
-      <h3>Participants</h3>
-      <div class="card">
-        <div class="card-header">
-          Room name
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Démarrer une session 
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <%= form_with(model: @room) do |form| %>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Créer une une nouvelle session</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% if @room.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@room.errors.count, "error") %> prohibited this @room from being saved:</h2>
+                <ul>
+                  <% @room.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="mb-3 row">
+              <label for="inputName" class="col-sm-2 col-form-label">Nom</label>
+              <div class="col-sm-10">
+                <%= form.text_field :name, class: "form-control", placeholder: "Entrez le nom de la session" %>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary">Créer</button>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col col-md-4">
-      <h3>Results</h3>
-      <div class="card">
-        <div class="card-header">
-          Room name
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
-</div>
+</section>
