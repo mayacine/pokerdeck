@@ -1,16 +1,35 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Rooms" %>
-
-<h1>Rooms</h1>
-
-<div id="rooms">
-  <% @rooms.each do |room| %>
-    <%= render room %>
-    <p>
-      <%= link_to "Show this room", room %>
-    </p>
-  <% end %>
+<section class="w-100 text-center mt-5">
+  <h1>Bienvenue sur poker deck</h1>
+  <p class="lead">Collaborez avec votre équipe pour estimer les user stories et planifier les sprints.</p>
+  <a href="#start" class="btn btn-primary btn-lg">Démarrer une session</a>
+</section>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col col-md-8">
+      <h3>Participants</h3>
+      <div class="card">
+        <div class="card-header">
+          Room name
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <h3>Results</h3>
+      <div class="card">
+        <div class="card-header">
+          Room name
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New room", new_room_path %>
