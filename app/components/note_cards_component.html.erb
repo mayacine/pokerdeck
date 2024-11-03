@@ -1,0 +1,13 @@
+ 
+<div data-controller="note-cards-component" class="row ">
+  <% format_notes.each do |note| %>
+    <button class="col-1 card-game">
+      <!-- Indicateur en haut à gauche -->
+      <div class="card-corner top-left"><%= note %></div>
+      <!-- Note principale au centre -->
+      <div class="card-number"><%= note %></div>
+      <!-- Indicateur en bas à droite -->
+      <div class="card-corner bottom-right"><%= note %></div>
+    </button>
+  <% end %>
+</div>

@@ -1,40 +1,33 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @room %>
 <%= @shared_url %>
-
 <div>
   <%= link_to "Edit this room", edit_room_path(@room) %> |
   <%= link_to "Back to rooms", rooms_path %>
-
   <%= button_to "Destroy this room", @room, method: :delete %>
 </div>
-
 <div class="container mt-5">
   <div class="row">
     <div class="col col-md-8">
-      <h3>Participants</h3>
+      <h4>Participants</h4>
       <div class="card">
         <div class="card-header">
-          Room name
+          Cartes
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <%= render NoteCardsComponent.new(notes: [1,2,3,5,8,13,20,40,"?"])%>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
     </div>
     <div class="col col-md-4">
-      <h3>Results</h3>
+      <h4> Contexte </h4>
       <div class="card">
-        <div class="card-header">
-          Room name
+        <div class="card-header bg-primary text-white d-flex fs-5 justify-content-center">
+          Commencer le vote
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn btn-lg w-100 btn-primary my-3"> Démarrer </a>
         </div>
       </div>
     </div>
