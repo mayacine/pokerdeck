@@ -7,11 +7,11 @@ class RoomBuilderService
   def perform
     build_room.save
   end
-  
-  def room 
+
+  def room
     @room
   end
-  
+
   private
 
   def build_room

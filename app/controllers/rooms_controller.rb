@@ -50,6 +50,34 @@ class RoomsController < ApplicationController
     end
   end
 
+  def start_vote
+    @service = StartVoteService.new(start_vote_params: start_vote_params)
+
+    respond_to do |format|
+      if @service.perform
+        format.html { redirect_to @service.room, notice: "Vote was successfully created." }
+        format.json { render :show, status: :created, location: @service.room }
+      else
+        format.html { redirect_to @service.room, notice: "Sart vote failed." }
+        format.json { render json: @service.room.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def vote
+    @service = RoomVoteService.new(vote_params: vote_params)
+    respond_to do |format|
+      if @service.perform
+
+        format.html { redirect_to @service.room, notice: "Vote was successfully created." }
+        format.json { render :show, status: :created, location: @service.room }
+      else
+        format.html { redirect_to @service.room, notice: "Save vote failed." }
+        format.json { render json: @service.room.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /rooms/1 or /rooms/1.json
   def destroy
     @room.destroy!
@@ -71,5 +99,9 @@ class RoomsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def room_params
       params.expect(room: [ :name, :uuid, :shared_link, :status ])
+    end
+
+    def vote_params
+      params.expect(vote: [ :room_id, :contributor_id, :estimation ])
     end
 end
