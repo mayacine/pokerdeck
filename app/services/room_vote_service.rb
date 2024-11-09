@@ -11,6 +11,10 @@ class RoomVoteService
     false
   end
 
+  def room
+    @room ||= Room.find(id: vote_params.dig(:room_id)
+  end
+
   private
 
   def create_vote
