@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import ClipboardurlController from "./clipboardurl_controller"
+application.register("clipboardurl", ClipboardurlController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

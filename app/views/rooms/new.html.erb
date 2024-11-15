@@ -1,10 +1,55 @@
-<%= turbo_frame_tag 'first_frame' do %>
-<% content_for :title, "New room" %>
-<%= render "form", room: @room %>
-
-<br>
-
-<div>
-  <%= link_to "Back to rooms", rooms_path , class: "btn btn-secondary" %>
-</div>
-<% end %>
+<section class="w-100 text-center mt-5">
+  <h1>Bienvenue sur poker deck</h1>
+  <p class="lead">Collaborez avec votre équipe pour estimer les user stories et planifier les sprints.</p>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Démarrer une session 
+  </button>
+  <!-- Modal -->
+  <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <%= form_with(model: @room) do |form| %>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Créer une une nouvelle session</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% if @room.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@room.errors.count, "error") %> prohibited this @room from being saved:</h2>
+                <ul>
+                  <% @room.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+             <div class="mb-3 row">
+              <label for="inputName" class="col-sm-2 col-form-label d-flex justify-content-start">Nom :</label>
+              <div class="col-sm-10">
+                <%= form.text_field :name, class: "form-control", placeholder: "Entrez le nom de la session" %>
+              </div>
+            </div>
+             <div class="mb-3 row">
+              <label for="inputName" class="col-sm-2 col-form-label d-flex justify-content-start">Mod&eacute;rateur :</label>
+              <div class="col-sm-10">
+                <%= form.text_field :moderator_name, class: "form-control", placeholder: "Entrez le nom du moderateur" %>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="inputName" class="col-sm-2 col-form-label d-flex justify-content-start">Equipe :</label>
+              <div class="col-sm-10">
+                <%= form.text_field :team_name, class: "form-control", placeholder: "Entrez le nom de l'equipe" %>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary">Créer</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

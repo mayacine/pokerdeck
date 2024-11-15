@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 <%= render @room %>
 <%= @shared_url %>
+<%= render ClipboardComponent.new(content_str: @shared_url) %>
 <div>
   <%= link_to "Edit this room", edit_room_path(@room) %> |
   <%= link_to "Back to rooms", rooms_path %>
@@ -15,7 +16,7 @@
           Cartes
         </div>
         <div class="card-body">
-          <%= render NoteCardsComponent.new(notes: [1,2,3,5,8,13,20,40,"?"])%>
+          <%= render NoteCardsComponent.new(notes: [1,2,3,5,8,13,21,34,55,89,"?","C"])%>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
@@ -27,7 +28,22 @@
           Commencer le vote
         </div>
         <div class="card-body">
-          <a href="#" class="btn btn-lg w-100 btn-primary my-3"> Démarrer </a>
+          <div class="row">
+            <div class="col-6">
+              <a href="#" class="btn btn-lg w-100 btn-outline-primary my-3"><span class="fs-6"> Voir Votes </span> </a>
+            </div>
+            <div class="col-6">
+              <a href="#" class="btn btn-lg w-100 btn-outline-danger my-3"><span class="fs-6"> Reset </span> </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+
+              <%= render ClipboardComponent.new(content_str: @shared_url) %>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

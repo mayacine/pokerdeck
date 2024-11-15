@@ -777,6 +777,11 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+sass-migrator@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/sass-migrator/-/sass-migrator-2.2.1.tgz#803a3d534f804eb5c8ab9a0c05a4b7a9b1c267e8"
+  integrity sha512-Sa2sVC2MeL4cVcEPpd8z/R5/c8LOA0B6K39IGrJl/8WQ24lI1tLF4P8WcQJSCt/lDmJCyOmFGZTC3Rf7/6tVfQ==
+
 sass@^1.80.3:
   version "1.80.3"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.80.3.tgz#3f63dd527647d2b3de35f36acb971bda80517423"

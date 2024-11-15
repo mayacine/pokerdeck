@@ -1,0 +1,11 @@
+<div data-controller="clipboardurl">
+  <span data-clipboardurl-target="source" data-clipboard-text="Content to copy">
+    <%= content_str %>
+  </span>
+  <button data-action="clipboardurl#copy" title="Copy to clipboard">
+    Copy
+  </button>
+  <span data-clipboardurl-target="copiedIndicator" class="hidden text-green-700 font-semibold">
+    copied
+  </span>
+</div>
