@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :rooms do
     member do
-      get 'vote/:participant_id', action: "vote"
+      get "vote/:participant_id", action: "vote"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

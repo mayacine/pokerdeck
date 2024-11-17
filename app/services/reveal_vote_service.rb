@@ -14,11 +14,10 @@ class RevealVoteService
   end
 
   private
-  
+
   def change_votes_status
     return false unless room
 
     room.votes.update_all!(status: 1)
   end
 end
-

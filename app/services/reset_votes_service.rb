@@ -14,11 +14,10 @@ class ResetVotesService
   end
 
   private
-  
+
   def reset_votes_status
     return false unless room
 
     room.votes.delete_all
   end
 end
-

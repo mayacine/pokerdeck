@@ -12,10 +12,10 @@ class Room < ApplicationRecord
   end
 
   def status_human
-    { 
-      '0' => "Cree",
-      '1' => "Estimation en cours",
-      '2' => "Fermee"
+    {
+      "0" => "Cree",
+      "1" => "Estimation en cours",
+      "2" => "Fermee"
     }[status.to_s]
   end
 

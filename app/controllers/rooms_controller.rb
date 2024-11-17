@@ -98,7 +98,7 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.expect(room: [ :name, :uuid, :shared_link, :status, :team_name,  :moderator_name])
+      params.expect(room: [ :name, :uuid, :shared_link, :status, :team_name,  :moderator_name ])
     end
 
     def vote_params

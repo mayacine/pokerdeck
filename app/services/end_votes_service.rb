@@ -2,7 +2,7 @@ class EndVotesService
   attr_reader :end_votes_params
 
   def initialize(end_votes_params:)
-    @end_votes_params = end_votes_params    
+    @end_votes_params = end_votes_params
   end
 
   def perform
@@ -10,7 +10,7 @@ class EndVotesService
   rescue
     false
   end
-  
+
   def closed_status_room
     return false unless room
 

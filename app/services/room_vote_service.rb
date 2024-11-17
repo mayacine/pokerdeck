@@ -12,7 +12,7 @@ class RoomVoteService
   end
 
   def room
-    @room ||= Room.find(id: vote_params.dig(:room_id)
+    @room ||= Room.find(id: vote_params.dig(:room_id))
   end
 
   private

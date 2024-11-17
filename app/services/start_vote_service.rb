@@ -2,7 +2,7 @@ class StartVoteService
   attr_reader :start_vote_params
 
   def initialize(start_vote_params:)
-    @start_vote_params = start_vote_params    
+    @start_vote_params = start_vote_params
   end
 
   def perform
@@ -10,7 +10,7 @@ class StartVoteService
   rescue
     false
   end
-  
+
   def change_status_room
     return false unless room
 
