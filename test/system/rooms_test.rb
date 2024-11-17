@@ -11,14 +11,13 @@ class RoomsTest < ApplicationSystemTestCase
   end
 
   test "should create room" do
-    visit rooms_url
-    click_on "New room"
+    visit root_url 
+    click_on "Démarrer une session"
 
-    fill_in "Name", with: @room.name
-    fill_in "Shared link", with: @room.shared_link
-    fill_in "Status", with: @room.status
-    fill_in "Uuid", with: @room.uuid
-    click_on "Create Room"
+    fill_in "room_name", with: @room.name
+    fill_in "room_moderator_name" , with: "Moderator" 
+    fill_in "room_team_name", with: "Agilab"
+    click_on "Créer"
 
     assert_text "Room was successfully created"
     click_on "Back"
@@ -41,7 +40,6 @@ class RoomsTest < ApplicationSystemTestCase
   test "should destroy Room" do
     visit room_url(@room)
     click_on "Destroy this room", match: :first
-
     assert_text "Room was successfully destroyed"
   end
 end
