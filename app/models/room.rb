@@ -1,7 +1,7 @@
 class Room < ApplicationRecord
   # associations
-  has_many :votes
-  has_many :contributors
+  has_many :votes, dependent: :destroy
+  has_many :contributors, dependent: :destroy
 
   def status_created?
     status == 1
