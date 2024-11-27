@@ -24,10 +24,14 @@ class Room < ApplicationRecord
   end
 
   def moderator_name
+    return unless uuid
+
     Moderator.find_by(current_room_uuid: uuid)&.name || "NO_NAME"
   end
 
   def empty_moderator_name
-    Moderator.find_by(current_room_uuid: uuid)&.update(current_room_uuid: nil)
+    return unless uuid
+
+    Moderator.find_by(current_room_uuid: uuid)&.destroy
   end
 end

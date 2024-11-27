@@ -48,7 +48,7 @@
               <%= render ClipboardComponent.new(content_str: @shared_url) %>
             </div>
             <div class="col-12">
-              Mod&eacute;rateur : <%=@moderator_name%>
+              Mod&eacute;rateur : <%= @moderator_name %> <%= @moderator_name == @current_contributor ? "*" : "" %>
               <hr>
               Contributeurs :
               <ul>

@@ -9,9 +9,11 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
-    session[:moderator_name] = @room.moderator_name unless session[:moderator_name]
+    redirect_to participate_room_path(@room) if session[:current_contributor].blank?
 
-    @moderator_name = session[:moderator_name]
+    # session[:moderator_name] = @room.moderator_name unless session[:moderator_name]
+
+    @moderator_name = @room.moderator_name
     @current_contributor = session[:current_contributor]
     @contributors = @room.contributors
  
@@ -34,6 +36,7 @@ class RoomsController < ApplicationController
     respond_to do |format|
       if @service.perform
         session[:moderator_name] = @service.room.moderator_name
+        session[:current_contributor] = @service.room.moderator_name
 
         format.html { redirect_to @service.room, notice: "Room was successfully created." }
         format.json { render :show, status: :created, location: @service.room }
