@@ -65,3 +65,7 @@ group :test do
 end
 
 gem "view_component", "~> 3.20"
+
+gem "activerecord-enhancedsqlite3-adapter", "~> 0.8.0"
+
+gem "litestream", "~> 0.12.0"

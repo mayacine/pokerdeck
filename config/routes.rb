@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   resources :rooms do
     member do
       get "vote/:participant_id", action: "vote"
+      get "reset", action: "reset"
+      get "participate", action: "participate"
+      get "reveal_votes", action: "reveal_votes"
+      get "hide_votes", action: "hide_votes"
+      post "participation", action: "participation"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
