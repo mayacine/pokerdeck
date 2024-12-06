@@ -26,38 +26,9 @@
           Commencer le vote
         </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col-6">
-              <!-- <a href="#" class="btn btn-lg w-100 btn-outline-primary my-3"><span class="fs-6"> Voir Votes </span> </a> -->
-              <%= link_to "Voir Votes", reveal_votes_room_path(@room), class: "btn btn-lg btn-outline-primary w-100  my-3" %>
-            </div>
-            <div class="col-6">
-              <!-- <a href="#" class="btn btn-lg w-100 btn-outline-primary my-3"><span class="fs-6"> Voir Votes </span> </a> -->
-              <%= link_to "Cache Votes", reveal_votes_room_path(@room), class: "btn btn-lg btn-outline-secondary w-100  my-3" %>
-            </div>
-            <div class="col-6">
-              <!-- <a href="#" class="btn btn-lg w-100 btn-outline-warning my-3"><span class="fs-6"> Reset </span> </a> -->
-              <%= link_to "Reset", reset_room_path(@room), class: "btn btn-lg w-100 btn-outline-warning my-3"%>
-            </div>
-
-            <div class="col-6">
-              <a href="/rooms" class="btn btn-lg w-100 btn-outline-danger my-3"><span class="fs-6">Quitter </span> </a>
-            </div>
-           
-            <div class="col-12 pt-3">
-              <%= render ClipboardComponent.new(content_str: @shared_url) %>
-            </div>
-            <div class="col-12">
-              Mod&eacute;rateur : <%= @moderator_name %> <%= @moderator_name == @current_contributor ? "*" : "" %>
-              <hr>
-              Contributeurs :
-              <ul>
-              <% @contributors.each do |contributor| %> 
-                <li> <%= contributor.name %> <%= contributor.name == @current_contributor ? "*" : ""%> </li>
-              <% end %> 
-              </ul>
-            </div>
-          </div>
+          <%= render StartedVotePanelComponent.new(
+            room: @room, shared_url: @shared_link, moderator_name: @moderator_name, current_contributor: @current_contributor, contributors: @contributors
+          ) %>
         </div>
       </div>
 
